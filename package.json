@@ -1,7 +1,7 @@
 {
   "name": "blue-badge-server",
   "version": "1.0.0",
-  "description": "Restaurant App",
+  "description": "Tapped - Restaurant App",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
