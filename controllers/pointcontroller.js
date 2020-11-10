@@ -11,7 +11,9 @@ router.get('/', (req, res) => {
     }));
 });
 
-router.post('/', validateSession, (req,res) => {
+//post points
+
+router.post('/post', validateSession, (req,res) => {
     const logFromRequest = {
         typeOfPoint: req.body.typeOfPoint,
         numberOfPoints: req.body.numberOfPoints,
@@ -27,6 +29,8 @@ router.get('/:name', (req, res) => {
         .then(log => res.status(200).json(log))
         .catch(err => res.status(500).json({ error: err}))
 })
+
+//delete points
 
 router.delete('/:id', validateSession, (req, res) => {
     Log.destroy({ where: { id: req.params.id } })
