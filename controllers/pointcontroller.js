@@ -17,6 +17,7 @@ router.post('/post', validateSession, (req,res) => {
     const logFromRequest = {
         typeOfPoint: req.body.typeOfPoint,
         numberOfPoints: req.body.numberOfPoints,
+        owner: req.user.id
     }
 
     Log.create(logFromRequest)

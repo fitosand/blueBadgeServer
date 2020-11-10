@@ -7,6 +7,9 @@ module.exports = (sequelize, DataTypes) => {
         numberOfPoints: {
             type: DataTypes.INTEGER,
         },
+        owner: {
+            type: DataTypes.INTEGER
+        }
 
     })
     return Log;
