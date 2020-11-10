@@ -12,6 +12,7 @@ router.post("/signup", (req, res) => {
         lastName: req.body.lastName,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 12)
+        
     })
         .then(user => {
             const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: "365d"})
