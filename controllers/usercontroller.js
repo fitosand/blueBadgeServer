@@ -3,6 +3,7 @@ const User = require('../db').import('../models/user');
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const validateSession = require('../middleware/validate-session');
 
 
 // sign up POST
@@ -57,23 +58,22 @@ router.post('/signin', (req, res) => {
 
 
 // update user account --- still in progress (J)
-router.put("/updateuser", (req, res) => {
-    User.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 12)
-    })
-        .then(user => {
-            const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: "365d"})
+router.put('/updateuser', validateSession, (req, res) => {
 
-            res.json({
-                user: user,
-                message: "user was created successfully",
-                sessionToken: token
-            })
+    
+    User.update(
+        { email: req.body.email },{where: { email: req.user.email }, returning: true}
+    ) .then ((user) => {
+        res.status(200).json({
+            Message: "User updated",
+            User: user
         })
-        .catch(err => res.status(500).send(err))
+    }
+
+    )
+
+    .catch(err => res.status(500).json({ error: err }))
+    
 })
 
 

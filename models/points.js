@@ -8,11 +8,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
         },
         owner: {
-<<<<<<< HEAD
-            type: DataTypes.INTEGER
-=======
             type: DataTypes.INTEGER,
->>>>>>> c54a50ebcefd9e848e9f343f52a343f472cde52e
         }
 
     })
