@@ -48,7 +48,12 @@ router.put("/update", validateSession, function (req, res) {
         const updatePoints = {
             numberOfPoints: log.numberOfPoints+1
         };    
-            Log.update(updatePoints,{ where: {owner: req.user.id }})
+            Log.update(updatePoints,{ 
+                where: {
+                    owner: req.user.id,
+                    typeOfPoint:req.body.typeOfPoint 
+                 }
+            })
             res.status(200).json(log) 
         })
         .catch((err) => res.status(500).json({ error: err })); 
