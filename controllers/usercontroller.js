@@ -27,7 +27,7 @@ router.post("/signup", (req, res) => {
         .catch(err => res.status(500).send(err))
 })
 
-router.post('/signin', (req, res) => {
+router.post('/login', (req, res) => {
     User.findOne({
         where: { email: req.body.email }
     })
