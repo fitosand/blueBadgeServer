@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 
 
 //create a new instance of Sequelize, connecting us to a database
-const database = new Sequelize(process.env.NAME, 'postgres', process.env.PASS, {
+const database = new Sequelize(process.env.DATABASE_URL, {
     // host: 'localhost',
     dialect: 'postgres'
 });
