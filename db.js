@@ -3,8 +3,8 @@ const Sequelize = require('sequelize');
 require('dotenv').config();
 
 //create a new instance of Sequelize, connecting us to a database
-const database = new Sequelize(process.env.NAME, 'postgres', process.env.PASS, {
-    host: 'localhost',
+const database = new Sequelize(process.env.DATABASE_URL, {
+    // host: 'localhost',
     dialect: 'postgres'
 });
 
